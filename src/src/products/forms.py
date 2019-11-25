@@ -26,6 +26,8 @@ class ProductForm(forms.ModelForm):
 			'price'
 		}
 
+
+
 	def clean_title(self, *args, **kwargs): # <my_field_name> 
 		title = self.cleaned_data.get("title")
 		if "CFE" not in title: # login written this way to input multiple errors if needed.
@@ -40,6 +42,7 @@ class ProductForm(forms.ModelForm):
 			raise forms.ValidationError("This is not a valid email")
 		return email
 		
+
 class RawProductForm(forms.Form):
 	title		= forms.CharField(label= '', widget= forms.TextInput(attrs= {"placeholder": "your title"}))
 	description = forms.CharField(

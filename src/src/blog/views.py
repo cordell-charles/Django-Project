@@ -47,6 +47,8 @@ def article_create_view(request):
 	if form.is_valid():
 		form.save()
 		form = ArticleForm()
+		response = redirect('http://127.0.0.1:8000/blog/')
+		return response
 
 	context = {
 		'form' : form
@@ -54,10 +56,17 @@ def article_create_view(request):
 	return render(request, "articles/article_create.html", context)
 
 
-
-
-
-
-# def article_delete_view(request):
-
+def article_delete_view(request, my_id):
+	obj = get_object_or_404(Article, id= my_id)
+	# POST request
+	if request.method == "POST":
+		# confirming delete
+		obj.delete()
+		response = redirect('http://127.0.0.1:8000/blog/')
+		return response
+		
+	context = {
+		"object": obj
+	}
+	return render(request, "articles/article_delete.html", context)
 
