@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import (
     article_detail_view,
-    article_list_view,
+    ArticleList,
     article_create_view,
     article_delete_view,
     dynamic_lookup_view,
@@ -11,7 +11,7 @@ from .views import (
 app_name = 'blog'
 urlpatterns = [
     path('<int:my_id>/', dynamic_lookup_view, name= 'article-detail'),
-    path('', article_list_view, name= 'article-list'),
+    path('', ArticleList.as_view(), name= 'article-list'),
     path('create', article_create_view, name= 'article-create'),
     path('delete/<int:my_id>/', article_delete_view, name= 'article-delete')
 ]

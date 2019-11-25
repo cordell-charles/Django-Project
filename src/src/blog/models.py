@@ -14,11 +14,3 @@ class Article(models.Model):
 		return reverse("blog:article-detail", kwargs={"my_id":self.id})
 
 
-'''
-class User(models.Model):
-	first_name 	= models.CharField()
-	last name 	= models.CharField()
-	is_staff	= 
-	last_login	= 
-
-'''
