@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # Third party apps
 
+
     # own apps
     'products',
     'pages',
@@ -64,11 +65,7 @@ TEMPLATES = [
         'DIRS': [os.path.join(BASE_DIR, "templates")], # Allows os independace - Send code to you and it still works.
         'APP_DIRS': True,
         'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+            'context_processors': [ 'django.contrib.auth.context_processors.auth'
             ],
         },
     },
@@ -125,3 +122,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+

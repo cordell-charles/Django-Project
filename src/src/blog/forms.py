@@ -6,10 +6,9 @@ class ArticleForm(forms.ModelForm):
 
 	title		= forms.CharField(
 					required= True,
-					label= '', 
 					widget= forms.TextInput(
 						attrs= {
-							"placeholder": "Your Main title"
+							"placeholder": "Main title"
 						}
 					)
 				)
@@ -31,7 +30,14 @@ class ArticleForm(forms.ModelForm):
 						}
 					)
 				)
-	name 		= forms.CharField(required= True)
+	name 		= forms.CharField(
+					required= True,
+					widget= forms.TextInput(
+						attrs= {
+							"placeholder": "Your name"
+						}
+					)
+				)
 
 	class Meta:
 	    model = Article
