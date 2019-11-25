@@ -1,10 +1,5 @@
 <!doctype html>
 <html>
-<nav>
-	<ul>
-		<li>brand bar</li>
-	</ul>
-</nav>
 
 <head>
 	<title>
@@ -13,6 +8,8 @@
 </head>
 <body>
 
+	{% include 'navbar.html' %} 
+	
 	{% block content %}
 	replace me
 	{% endblock %}

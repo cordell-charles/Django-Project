@@ -7,7 +7,7 @@
 {% for instance in object_list %}
 	<!-- <p> {{ instance.id }} - {{ instance.title }} </p> -->
 	<!-- <p> {{ instance.id }} - <a href= '/products/{{ instance.id }}/'>{{ instance.title }}</a></p> -->
-	<p> <a href= '{{ instance.get_absolute_url }}' > {{instance.id }} - {{ instance.title }}: {{ instance.date }}</a> </p> <!-- Dynamic linking of Url's -->
+	<p> <a href= '{{ instance.get_absolute_url }}' > {{ instance.title }}: {{ instance.date }}</a> </p> <!-- Dynamic linking of Url's -->
 
 {% endfor %}
 
