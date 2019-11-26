@@ -7,7 +7,6 @@ from django.views.generic import (
 	UpdateView,
 	DeleteView
 )
-
 from .models import Article
 from .forms import ArticleForm
 
@@ -19,8 +18,6 @@ class ArticleDetailView(DetailView):
 	def get_object(self):
 		id_ = self.kwargs.get("my_id")
 		return get_object_or_404(Article, id=id_)
-
-
 
 ''' Function based detail view
 def article_detail_view(request):
@@ -39,6 +36,7 @@ def article_detail_view(request):
 
 
 
+
 def dynamic_lookup_view(request, my_id): # Dynamic Url Routing
 	obj = Article.objects.get(id= my_id)
 	# obj = get_object_or_404(Product, id= my_id) - Changing the error page layout if object is not found 
@@ -46,9 +44,6 @@ def dynamic_lookup_view(request, my_id): # Dynamic Url Routing
 	"object": obj
 	}
 	return render(request, "articles/article_detail.html", context)
-
-
-
 
 
 
@@ -70,9 +65,6 @@ def article_list_view(request):
 	}
 	return render(request, "articles/article_list.html", context)
 '''
-
-
-
 
 
 
@@ -102,6 +94,8 @@ def article_create_view(request):
 
 
 
+
+
 class ArticleEditView(UpdateView): # Class based editing view
 	
 	template_name = 'articles/article_create.html'
@@ -116,23 +110,9 @@ class ArticleEditView(UpdateView): # Class based editing view
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 class ArticleDeleteView(DeleteView): # Class based editing view
 	
 	template_name = 'articles/article_delete.html'
-	# form_class = ArticleForm
 
 	def get_object(self):
 		id_ = self.kwargs.get("my_id")
@@ -141,7 +121,6 @@ class ArticleDeleteView(DeleteView): # Class based editing view
 
 	def get_success_url(self):
 		return reverse('blog:article-list')
-
 
 '''
  # Function based delete view
