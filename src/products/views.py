@@ -73,7 +73,6 @@ def dynamic_lookup_view(request, my_id): # Dynamic Url Routing
 
 
 
-
 def product_create_view(request):
 
 	form = ProductForm(request.POST or None)

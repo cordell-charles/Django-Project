@@ -4,13 +4,11 @@ from .models import Article
 
 class ArticleForm(forms.ModelForm):
 
-
 	title		= forms.CharField(
 					required= True,
-					label= '', 
 					widget= forms.TextInput(
 						attrs= {
-							"placeholder": "Your Main title"
+							"placeholder": "Main title"
 						}
 					)
 				)
@@ -27,12 +25,19 @@ class ArticleForm(forms.ModelForm):
 					widget= forms.Textarea(
 						attrs= {
 							"placeholder": "Your story",
-							"rows": 40,
-							"cols": 120,
+							"rows": 30,
+							"cols": 100,
 						}
 					)
 				)
-	name 		= forms.CharField(required= True)
+	name 		= forms.CharField(
+					required= True,
+					widget= forms.TextInput(
+						attrs= {
+							"placeholder": "Your name"
+						}
+					)
+				)
 
 	class Meta:
 	    model = Article

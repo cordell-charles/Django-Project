@@ -10,5 +10,7 @@ class Article(models.Model):
 	name = models.CharField(blank= False, max_length= 80)
 
 
-	def get_absolute_url(self):  # Url reverse 
-		return reverse("articles:article-detail")
+	def get_absolute_url(self):  
+		return reverse("blog:article-detail", kwargs={"my_id":self.id})
+
+
