@@ -1,5 +1,5 @@
 from django import forms
-from .models import Users
+from .models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
@@ -14,13 +14,12 @@ class RegisterForm(forms.ModelForm):
 	password 	= forms.CharField(required= True, max_length= 100)
 
 
-	class meta:
-		model 	= Users
+	class Meta:
+		model 	= User
 		fields 	= {
-			"first name",
-			"last name",
+			"first_name",
+			"last_name",
 			"username",
 			"email",
-			"password1",
-			"password2"
+			"password",
 		}

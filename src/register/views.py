@@ -1,34 +1,23 @@
 from django.shortcuts import render, redirect
-from .models import Users
+from django.views.generic import ListView
+from .models import User
 from .forms import RegisterForm
 
 # Create your views here.
 def register(request):
 	if request.method == "POST":
 		form = RegisterForm(request.POST)
-		if form.is_valid(): 
+		if form.is_valid():
 			form.save()
-
-		return redirect("/home")
+			return redirect("/blog")
 	else:
 		form = RegisterForm()
 
 	return render(request, "register/register.html", {"form":form})
 
-'''
-def product_create_view(request):
 
-	form = ProductForm(request.POST or None)
-
-	if form.is_valid():
-		form.save()
-		form = ProductForm()
-
-	context = {
-		'form' : form
-	}
-	return render(request, "products/product_create.html", context)
-'''
-
-
+class RegisterListView(ListView): 
+	# model = User
+	template_name = 'register/user_list.html'
+	queryset = User.objects.all()
 

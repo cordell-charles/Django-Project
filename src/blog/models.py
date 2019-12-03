@@ -3,11 +3,12 @@ from django.urls import reverse
 
 # Create your models here.
 class Article(models.Model):
-	title = models.CharField(max_length= 120) 
-	subtitle = models.CharField(max_length= 240)
-	date = models.DateField(auto_now= True)
-	article = models.TextField(blank= False)
-	name = models.CharField(blank= False, max_length= 80)
+	# user		= models.ForeignKey(User)
+	title 		= models.CharField(max_length= 120) 
+	subtitle 	= models.CharField(max_length= 240)
+	date 		= models.DateField(auto_now= True)
+	article 	= models.TextField(blank= False)
+	name 		= models.CharField(blank= False, max_length= 80)
 
 
 	def get_absolute_url(self):  

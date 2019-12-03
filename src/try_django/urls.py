@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-from register import views as v
+from register.views import (register, RegisterListView)
 
 from pages.views import (home_view,
     contact_view,
@@ -31,6 +31,7 @@ urlpatterns = [
     path('about/',about_view),
     path('contact/', contact_view),
     path('admin/', admin.site.urls),
-    path('register/', v.register, name='register')
+    path('register/', register, name='register'),
+    path('register-list', RegisterListView.as_view(), name= 'register-list')
 
 ]

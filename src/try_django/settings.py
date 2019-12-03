@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    # 'main.apps.MainConfig',
     'register.apps.RegisterConfig',
 
     # Third party apps
@@ -68,7 +67,8 @@ TEMPLATES = [
         'DIRS': [os.path.join(BASE_DIR, "templates")], # Allows os independace - Send code to you and it still works.
         'APP_DIRS': True,
         'OPTIONS': {
-            'context_processors': [ 'django.contrib.auth.context_processors.auth'
+            'context_processors': [ 'django.contrib.auth.context_processors.auth',
+                                'django.contrib.messages.context_processors.messages',
             ],
         },
     },
