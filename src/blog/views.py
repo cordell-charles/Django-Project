@@ -10,8 +10,7 @@ from django.views.generic import (
 from .models import Article
 from .forms import ArticleForm
 
-# Create your views here.
-
+# Create your views here - Commented out
 class ArticleDetailView(DetailView):
 	template_name = 'articles/article_detail.html'
 
@@ -91,8 +90,6 @@ def article_create_view(request):
 	}
 	return render(request, "articles/article_create.html", context)
 '''
-
-
 
 
 

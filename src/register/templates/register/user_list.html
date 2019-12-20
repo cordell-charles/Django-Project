@@ -1,5 +1,4 @@
 
-
 {% block content %}
 <p> Username </p>
 <p> password </p>
@@ -7,10 +6,9 @@
 {% for instance in object_list %}
 
 	<p> {{ instance.id }} </p>
-	<p>Username: {{instance.first_name}} </p> 
+	<p> Username: {{instance.first_name}} </p>
 	<p> Password: {{instance.password}} </p> 
 
 {% endfor %}
-
 
 {% endblock %}

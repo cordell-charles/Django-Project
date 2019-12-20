@@ -45,4 +45,5 @@ class ArticleForm(forms.ModelForm):
 	        'title',
 	        'subtitle',
 	    	'article',
-	    	'name'}
+	    	'name'
+	}
