@@ -8,7 +8,7 @@ from .forms import RegisterForm
 
 def register(request):
 
-	form = RegisterForm(request.POST)
+	form = RegisterForm(request.POST or None)
 	if request.method == "POST":
 		if form.is_valid():
 			form.save()

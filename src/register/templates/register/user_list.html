@@ -1,13 +1,12 @@
 
 {% block content %}
-<p> Username </p>
-<p> password </p>
 
 {% for instance in object_list %}
 
-	<p> {{ instance.id }} </p>
-	<p> Username: {{instance.first_name}} </p>
-	<p> Password: {{instance.password}} </p> 
+	<p> Model id: {{ instance.id }} </p>
+	<p> Username: {{ instance.first_name }} </p>
+	<p> Email: {{ instance.email }} </p>
+	<p> Password: {{instance.password}} </p>
 
 {% endfor %}
 
