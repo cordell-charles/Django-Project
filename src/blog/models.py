@@ -4,7 +4,7 @@ from register.models import User
 
 # Create your models here.
 class Article(models.Model):
-	# user		= models.ForeignKey(User, on_delete= models.CASCADE )
+	user		= models.ForeignKey(User, on_delete= models.CASCADE)
 	title 		= models.CharField(max_length= 120) 
 	subtitle 	= models.CharField(max_length= 240)
 	date 		= models.DateField(auto_now= True)

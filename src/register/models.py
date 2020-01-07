@@ -25,3 +25,5 @@ class User(models.Model):
 				User.objects.create(user= user, first_name= first_name, last_name= last_name, email= email,username= username, password= password)
 			except Exception as e:
 				return e
+
+

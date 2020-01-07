@@ -12,7 +12,7 @@ def register(request):
 	if request.method == "POST":
 		if form.is_valid():
 			form.save()
-			response = redirect("/blog")
+			response = redirect("/register-list")
 			return response
 	else:
 		return render(request,"register/register.html",{"form": form})
