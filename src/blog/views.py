@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
 from django.views.generic import (
 	ListView,
@@ -46,9 +47,7 @@ def dynamic_lookup_view(request, my_id): # Dynamic Url Routing
 
 
 
-
-
-class ArticleListView(ListView): # Class based list view
+class ArticleListView(LoginRequiredMixin, ListView): # Class based list view
 	# model = Article
 	template_name = 'articles/article_list.html'
 	queryset = Article.objects.all()  # blog/<modelname>_list.html

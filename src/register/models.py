@@ -14,6 +14,9 @@ class User(models.Model):
 	username 	= models.CharField(max_length= 100, blank= False, null= True)
 	password 	= models.CharField(max_length= 100, blank= False, null= True)
 
+	class Meta:
+		verbose_name_plural = "Blog Users"
+
 	def __repr__(self):
 		return f"(self.user.email)"
 
