@@ -19,6 +19,8 @@ from django.urls import include, path
 
 from register.views import (register,
                             RegisterListView,
+                            LoginView,
+                            LogoutView,
     )
 
 from pages.views import (home_view,
@@ -36,6 +38,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', register, name='register'),
     path('register-list', RegisterListView.as_view(), name= 'register-list'),
-    path('login/', auth_views.LoginView.as_view(template_name= 'register/login.html'), name= 'login'),
-    path('logout/', auth_views.LogoutView.as_view(), name= 'logout')
+    path('login/', LoginView.as_view(), name= 'login'),
+    path('logout/', LogoutView.as_view(), name= 'logout')
 ]

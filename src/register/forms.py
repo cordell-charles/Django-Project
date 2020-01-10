@@ -21,7 +21,18 @@ class RegisterForm(forms.ModelForm):
 			"last_name",
 			"username",
 			"email",
-			"password",
+			"password"
 		}
 
 
+class LoginForm(forms.ModelForm):
+
+	email 			= forms.EmailField(required= True,max_length= 80)
+	password 		= forms.CharField(required= True, max_length= 100)
+
+	class Meta:
+		model = User
+		fields = {
+			"email",
+			"password"
+		}

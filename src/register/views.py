@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View, ListView, FormView
 from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .models import User
-from .forms import RegisterForm
+from .forms import RegisterForm, LoginForm
 
 # Create your views here.
 
@@ -26,39 +27,45 @@ class RegisterListView(ListView):
 	queryset = User.objects.all()
 
 
-'''
-class LoginView(FormView):
-	
+
+class LoginView(View):
+	'''
 	Signing in existing users while also checking if they already have a session open
-	
+	'''
 
-	def user_login(self, request):
+	def get(self, request):
 		form = LoginForm(request.POST or None)
-		if request.method == 'POST':
-			email = request.POST['email']
-			password = request.POST['password']
-			sign_in = authenticate(email= email, password= password)
-			if sign_in is not None:
-				if sign_in.is_active:
-					login(request, sign_in)
-					return redirect('blog/')
-				else:
-					# Prompt to say account is not active
-					return "This account is not active!"
+		return render(request, 'register/login.html', {"form":form})
+
+
+	def login(self, request):
+		email = request.POST['email']
+		password = request.POST['password']
+		user = authenticate(email= email, password= password)
+		if user is not None:
+			if user.is_active:
+				login(request, user)
+				return HttpResponseRedirect('blog/')
 			else:
-				# Returning an incorrect credential error
-				print(" Invalid email or password, please try again ")
-				return render(request, 'login.html', {"form":form})
+				# Prompt to say account is not active
+				return HttpResponse("This account is not active!")
+		else:
+			# Returning an incorrect credential error
+			print(" Invalid email or password, please try again ")
+			return render(request, 'register/login.html')  #, {"form":form})
 
 
-	def authenticated(self):
-		
-		Checks if user is already authenticated
-		
-'''
-'''
 class LogoutView(View):
-    def get(self, request, *args, **kwargs):
-        logout(self.request)
-        return HttpResponseRedirect(reverse('login'))
-'''
+
+	def get(self, request):
+		logout(request)
+		return HttpResponseRedirect(reverse('login'))
+
+	def logout(self, request):
+		logout(request)
+		return HttpResponseRedirect('You have been successfully logged out!')
+
+
+
+
+

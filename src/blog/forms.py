@@ -40,8 +40,8 @@ class ArticleForm(forms.ModelForm):
 				)
 
 	class Meta:
-	    model = Article
-	    fields = {
+		model = Article
+		fields = {
 	        'title',
 	        'subtitle',
 	    	'article',
