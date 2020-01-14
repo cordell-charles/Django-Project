@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View, ListView, FormView
 from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from .models import User
 from .forms import RegisterForm, LoginForm
@@ -28,31 +28,40 @@ class RegisterListView(ListView):
 
 
 
-class LoginView(View):
+class LoginView(FormView):
 	'''
 	Signing in existing users while also checking if they already have a session open
 	'''
+	form_class = LoginForm
 
 	def get(self, request):
-		form = LoginForm(request.POST or None)
-		return render(request, 'register/login.html', {"form":form})
+		return render(request, 'register/login.html', {"form": self.form_class})
 
 
-	def login(self, request):
-		email = request.POST['email']
-		password = request.POST['password']
-		user = authenticate(email= email, password= password)
-		if user is not None:
-			if user.is_active:
-				login(request, user)
-				return HttpResponseRedirect('blog/')
-			else:
-				# Prompt to say account is not active
-				return HttpResponse("This account is not active!")
-		else:
-			# Returning an incorrect credential error
-			print(" Invalid email or password, please try again ")
-			return render(request, 'register/login.html')  #, {"form":form})
+	def form_valid(self, form):
+		import ipdb; ipdb.sset_trace()
+		email = form.data['email']
+		password = form.data['password']
+
+
+		# user = authenticate(email= email, password= password)
+		# if user is not None:
+		# 	if user.is_active:
+		# 		login(request, user)
+		# 		return HttpResponseRedirect('blog/')
+		# 	else:
+		# 		# Prompt to say account is not active
+		# 		return HttpResponse("This account is not active!")
+		# else:
+		# 	# Returning an incorrect credential error
+		# 	print(" Invalid email or password, please try again ")
+		# 	return render(request, 'register/login.html')  #, {"form":form})
+
+	def form_invalid(self):
+		"""
+		If form is not valid, then this function is ran
+		"""
+		pass
 
 
 class LogoutView(View):
