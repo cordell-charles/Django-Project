@@ -1,6 +1,8 @@
 from django import forms
 from .models import User
+from django.contrib.auth import authenticate
 from django.contrib.auth.hashers import check_password
+from django.core.exceptions import ObjectDoesNotExist
 # from django.contrib.auth.forms import UserCreationForm
 # from django.contrib.auth.models import User
 
@@ -40,27 +42,45 @@ class RegisterForm(forms.ModelForm):
 
 class LoginForm(forms.Form):
 
-	email 			= forms.EmailField(required= True,max_length= 80)
+	# email 			= forms.EmailField(required= True,max_length= 80)
+	username		= forms.CharField(required= True, max_length= 80)
 	password 		= forms.CharField(required= True, max_length= 100,  widget=forms.PasswordInput)
 
 
-	def clean_email(self, email):
-		"""
-		Validate email against the database
-		"""
-		try:
-			User.objects.get(user__email= email)
-		except User.DoesNotExist:
-			raise ValueError()
-		return
+	# def clean_email(email):
+	# 	"""
+	# 	Validate email against the database
+	# 	"""
+	# 	try:
+	# 		User.objects.get(user__email= email)
+	# 	except ObjectDoesNotExist:
+	# 		raise forms.ValidationError("User does not exist!")
+	# 	return user__email
 
-	def clean_password(self, password):
+	# user = authenticate(username=username, password=password)
+
+	def clean_username(self):
+		try:
+			username= self.cleaned_data['username']
+			User.objects.get(username)
+			authenticate(user.username)
+		except ObjectDoesNotExist:
+			raise forms.ValidationError("User does not exist!")
+		return username
+
+
+	def clean_password(self):
 		"""
 		To validate you should use the django check_password
 		"""
 		# user = User.objects.last()
 		try:
+			password= self.cleaned_data['password']
 			check_password(password)
+			authenticate(user.password)
 		except:
-			raise ValueError()
-		return
+			raise forms.ValidationError('Password is incorrect')
+		return password
+
+	def get_user(self):
+		return self.authed_user
