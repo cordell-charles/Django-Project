@@ -9,6 +9,10 @@ class Product(models.Model):
 	summary = models.TextField(blank= True, null= False)
 	feature = models.BooleanField(default= False) # can do null= True, default= True
 
+
+	class Meta:
+		verbose_name_plural = "Product list"
+
 	'''
 	def get_absolute_url(self):  # Dynamic linking of Url's
 		return f"/products/{self.id}/" 

@@ -36,16 +36,20 @@ class LoginView(FormView):
 	'''
 	template_name = 'register/login.html'
 	form_class = LoginForm
+	# import ipdb;ipdb.set_trace()
 
 	def get(self, request):
 		if request.user.is_authenticated:
 			return HttpResponseRedirect(self.get_success_url())
+		print('made the request')
 		return render(request, 'register/login.html', {"form": self.form_class})
 
 
 	def form_valid(self, form):
-		# import ipdb;ipdb.sset_trace()
-		user = form.get_user()
+		# import ipdb;ipdb.set_trace()
+		print('made it here')
+		# user = authenticate(username, password)
+		user = get_user()
 		login(request, user)
 		return HttpResponseRedirect(self.get_success_url())
 
