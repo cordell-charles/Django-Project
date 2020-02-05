@@ -3,6 +3,7 @@ from .models import User
 from django.contrib.auth import authenticate
 from django.contrib.auth.hashers import check_password
 from django.core.exceptions import ObjectDoesNotExist
+from django.utils.translation import ugettext_lazy as _
 # from django.contrib.auth.forms import UserCreationForm
 # from django.contrib.auth.models import User
 
@@ -43,8 +44,10 @@ class RegisterForm(forms.ModelForm):
 class LoginForm(forms.Form):
 
 	# email 			= forms.EmailField(required= True,max_length= 80)
-	username		= forms.CharField(required= True, max_length= 80)
-	password 		= forms.CharField(required= True, max_length= 100,  widget=forms.PasswordInput)
+	username		= forms.CharField(label=_("username"), required= True, max_length= 80, widget= forms.TextInput(attrs={'placeholder':'Username'}))
+	password 		= forms.CharField(label=_("password"), required= True, max_length= 100,  widget=forms.PasswordInput(attrs={'placeholder':'Password'}))
+
+
 
 
 	# def clean_email(email):
@@ -61,7 +64,8 @@ class LoginForm(forms.Form):
 
 	def clean_username(username):
 		try:
-			# User.objects.get(username= username)
+			current_user = User.objects.get(user__username= username)
+			print(current_user)
 			user = authenticate(username= username)
 			print('in the user form')
 		except ObjectDoesNotExist:
@@ -77,6 +81,7 @@ class LoginForm(forms.Form):
 		"""
 		# user = User.objects.last()
 		try:
+			print(password)
 			# user_password = self.cleaned_data['password']
 			check_password(password, User.password)
 			print('password checked')

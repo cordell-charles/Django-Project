@@ -77,4 +77,3 @@ class LogoutView(View):
 	def logout(self, request):
 		logout(request)
 		return HttpResponseRedirect('You have been successfully logged out!')
-
