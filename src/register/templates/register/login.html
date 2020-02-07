@@ -1,10 +1,28 @@
-{% block title %} Sign In Here {% endblock %}
+<!doctype html>
 
-<title> Login </title>
+
+<head>
+    <title> Login </title>
+
+    <style>
+        body{
+        color: black;
+        background-color: rgb(255, 153, 51);
+        }
+
+    </style>
+
+</head>
+
+
+{% block title %} <strong style="text-decoration: underline;"> Sign in Here </strong> {% endblock %}
+
+
 
 {% load crispy_forms_tags %}
 
 {% block content %}
+
 <body>
     <form method="POST" class="form-group">
         {% csrf_token %}
@@ -23,4 +41,7 @@
         <button type="submit" class="btn btn-success"> Login </button>
     </form>
 </body>
+
 {% endblock %}
+
+

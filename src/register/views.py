@@ -22,6 +22,11 @@ def register(request):
 		return render(request,"register/register.html",{"form": form})
 
 
+def login_and_handle_data_stored_in_session(user, request):
+	session_key = request.session.session_key
+	login(request, user)
+
+
 class RegisterListView(ListView):
 	model = User
 	template_name = 'register/user_list.html'
@@ -48,9 +53,8 @@ class LoginView(FormView):
 	def form_valid(self, form):
 		# import ipdb;ipdb.set_trace()
 		print('made it here')
-		# user = authenticate(username, password)
-		user = get_user()
-		login(request, user)
+		user = form.get_user()
+		login_and_handle_data_stored_in_session(user, self.request)
 		return HttpResponseRedirect(self.get_success_url())
 
 
@@ -65,7 +69,6 @@ class LoginView(FormView):
 
 	def get_success_url(self):
 		return reverse('blog:article-list')
-
 
 
 class LogoutView(View):
