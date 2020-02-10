@@ -1,0 +1,45 @@
+<head>
+
+    <title> Sign up </title>
+
+    <link rel="stylesheet" type="text/css" href="../static/stylesheet.css">
+
+</head>
+
+<body>
+
+<h1> Create an Account </h1>
+
+    {% load crispy_forms_tags %}
+
+    {% block content %}
+
+    <form method="POST" class="form-group">
+    {% csrf_token %}
+        <div id="form-field">
+            {{ form.first_name|as_crispy_field }}
+        </div>
+        <div id="form-field">
+            {{ form.last_name|as_crispy_field }}
+        </div>
+        <div id="form-field">
+            {{ form.email|as_crispy_field }}
+        </div>
+        <div id="form-field">
+            {{ form.username|as_crispy_field }}
+        </div>
+        <div id="form-field">
+            {{ form.password|as_crispy_field }}
+        </div>
+        <div id="form-field">
+            {{ form.password1|as_crispy_field }}
+        </div>
+        <br>
+
+    <button type="submit" class="btn btn-success">Register</button>
+    </form>
+
+    {% endblock %}
+
+</body>
+

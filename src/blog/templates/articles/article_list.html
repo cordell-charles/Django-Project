@@ -1,20 +1,32 @@
-{% extends 'article_nav.html' %}
+<head>
 
-{% block content %}
+	<title> Main page </title>
 
-<h1> This is the article list view </h1>
+	<link rel="stylesheet" type="text/css" href="../static/stylesheet.css">
 
-{% for instance in object_list %}
-	<!-- <p> {{ instance.id }} - {{ instance.title }} </p> -->
-	<!-- <p> {{ instance.id }} - <a href= '/products/{{ instance.id }}/'>{{ instance.title }}</a></p> -->
-	<p> <a href= "{{ instance.get_absolute_url }}" > {{ instance.title }}: {{ instance.date }}</a> </p> <!-- Dynamic linking of Url's -->
+</head>
 
-{% endfor %}
+<body>
+
+	{% extends 'article_nav.html' %}
+
+	{% block content %}
+
+	<h1> This is the article list view </h1>
+
+	{% for instance in object_list %}
+		<!-- <p> {{ instance.id }} - {{ instance.title }} </p> -->
+		<!-- <p> {{ instance.id }} - <a href= '/products/{{ instance.id }}/'>{{ instance.title }}</a></p> -->
+		<p> <a href= "{{ instance.get_absolute_url }}" > {{ instance.title }}: {{ instance.date }}</a> </p> <!-- Dynamic linking of Url's -->
+
+	{% endfor %}
 
 
-	<a href="http://127.0.0.1:8000/logout"> Logout </a>
+		<a href="http://127.0.0.1:8000/logout"> Logout </a>
 
 
-{% endblock %}
+	{% endblock %}
+
+</body>
 
 

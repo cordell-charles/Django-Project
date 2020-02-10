@@ -1,0 +1,39 @@
+
+body {
+    color: black;
+    background-color: #ffcf79;
+    font-family: Georgia, Arial, Geneva, Arial Black;
+}
+
+h1 {
+    text-decoration: underline;
+}
+
+p {
+    color: white;
+    line-height: 1.5em;
+    padding: 10px;
+    border-color: white;
+    border-width: 2px;
+    border-style: solid;
+    background-image: url(p_background.jpg);
+    border-radius: 10px;
+}
+
+#form-field {
+    color: red;
+    line-height: 1.5em;
+}
+
+a:link {
+    color: red;
+}
+
+a:visited {
+    color: #ffffff;
+}
+
+a:hover {
+    color: #8c8c9d;
+}
+

@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'register.apps.RegisterConfig',
+    'accounts.apps.AccountsConfig',
 
     # Third party apps
 
@@ -58,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'try_django.urls'
 
@@ -137,4 +138,5 @@ STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/blog/'
+# AUTH_USER_MODEL = 'accounts.User'
 

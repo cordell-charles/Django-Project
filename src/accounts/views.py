@@ -11,7 +11,6 @@ from .forms import RegisterForm, LoginForm
 
 
 def register(request):
-
 	form = RegisterForm(request.POST or None)
 	if request.method == "POST":
 		if form.is_valid():
@@ -19,7 +18,7 @@ def register(request):
 			response = redirect("/login")
 			return response
 	else:
-		return render(request,"register/register.html",{"form": form})
+		return render(request,"users/register.html",{"form": form})
 
 
 def login_and_handle_data_stored_in_session(user, request):
@@ -27,9 +26,9 @@ def login_and_handle_data_stored_in_session(user, request):
 	login(request, user)
 
 
-class RegisterListView(ListView):
+class AccountListView(ListView):
 	model = User
-	template_name = 'register/user_list.html'
+	template_name = 'users/user_list.html'
 	queryset = User.objects.all()
 
 
@@ -39,7 +38,7 @@ class LoginView(FormView):
 	'''
 	Signing in existing users while also checking if they already have a session open
 	'''
-	template_name = 'register/login.html'
+	template_name = 'users/login.html'
 	form_class = LoginForm
 	# import ipdb;ipdb.set_trace()
 
@@ -47,7 +46,7 @@ class LoginView(FormView):
 		if request.user.is_authenticated:
 			return HttpResponseRedirect(self.get_success_url())
 		print('made the request')
-		return render(request, 'register/login.html', {"form": self.form_class})
+		return render(request, 'users/login.html', {"form": self.form_class})
 
 
 	def form_valid(self, form):
@@ -64,11 +63,12 @@ class LoginView(FormView):
 		"""
 		# import ipdb; ipdb.sset_trace()
 		messages.add_message(self.request, messages.ERROR, ("Username or password is invalid!"))
-		return render(self.request, 'register/login.html', {"form": self.form_class})
+		return render(self.request, 'users/login.html', {"form": self.form_class})
 
 
 	def get_success_url(self):
 		return reverse('blog:article-list')
+
 
 
 class LogoutView(View):

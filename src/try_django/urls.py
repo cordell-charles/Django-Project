@@ -17,8 +17,8 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import include, path
 
-from register.views import (register,
-                            RegisterListView,
+from accounts.views import (register,
+                            AccountListView,
                             LoginView,
                             LogoutView,
     )
@@ -37,7 +37,7 @@ urlpatterns = [
     path('contact/', contact_view),
     path('admin/', admin.site.urls),
     path('register/', register, name='register'),
-    path('register-list', RegisterListView.as_view(), name= 'register-list'),
+    path('account-list', AccountListView.as_view(), name= 'account-list'),
     path('login/', LoginView.as_view(), name= 'login'),
     path('logout/', LogoutView.as_view(), name= 'logout')
 ]
