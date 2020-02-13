@@ -3,34 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="49e2c471-0f8b-4266-9005-a2c5ac1d595f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/templates/articles/article_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/articles/article_create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/templates/articles/article_delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/articles/article_delete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/templates/articles/article_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/articles/article_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/templates/articles/article_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/templates/articles/article_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/static/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/blog/static/stylesheet.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/register/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/register/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/register/forms.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/register/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/register/migrations/0002_auto_20191203_1245.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/register/migrations/0003_auto_20191203_1509.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/register/migrations/0004_auto_20191220_1232.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/register/migrations/0005_auto_20191220_1250.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/register/migrations/0006_auto_20200108_1708.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/register/migrations/0007_remove_user_user.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/register/migrations/0008_user_user.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/register/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/register/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/register/templates/register/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/register/templates/register/register.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/register/templates/register/user_list.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/register/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/register/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/article_nav.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/article_nav.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/try_django/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/try_django/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/try_django/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/try_django/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +27,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -88,23 +63,32 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="1494" y="750" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1581432119246">
+      <screen x="1080" y="574" width="1920" height="1040" />
+    </state>
+    <state x="1494" y="750" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1080.1880/-1920.574.1920.1040/1080.574.1920.1040@1080.574.1920.1040" timestamp="1581432119246" />
     <state x="1798" y="898" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1581342781841">
       <screen x="1080" y="574" width="1920" height="1040" />
     </state>
     <state x="1799" y="898" key="#com.intellij.fileTypes.FileTypeChooser/-1920.574.1920.1040/0.0.1080.1880/1080.574.1920.1040@1080.574.1920.1040" timestamp="1578496707824" />
     <state x="1798" y="898" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1080.1880/-1920.574.1920.1040/1080.574.1920.1040@1080.574.1920.1040" timestamp="1581342781841" />
     <state x="404" y="586" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1080.1880/1080.574.1920.1040/-1920.574.1920.1040@0.0.1080.1880" timestamp="1581336319904" />
-    <state x="1653" y="773" key="SettingsEditor" timestamp="1581091994790">
+    <state x="1974" y="766" key="SettingsEditor" timestamp="1581432532834">
       <screen x="1080" y="574" width="1920" height="1040" />
     </state>
     <state x="1653" y="773" key="SettingsEditor/-1920.574.1920.1040/1080.574.1920.1040/0.0.1080.1880@1080.574.1920.1040" timestamp="1578476754617" />
-    <state x="1653" y="773" key="SettingsEditor/0.0.1080.1880/-1920.574.1920.1040/1080.574.1920.1040@1080.574.1920.1040" timestamp="1581091994790" />
-    <state x="1510" y="999" key="com.intellij.ide.util.TipDialog" timestamp="1581087397856">
+    <state x="1974" y="766" key="SettingsEditor/0.0.1080.1880/-1920.574.1920.1040/1080.574.1920.1040@1080.574.1920.1040" timestamp="1581432532834" />
+    <state x="1653" y="773" key="SettingsEditor/0.0.1080.1880/1080.574.1920.1040/-1920.574.1920.1040@1080.574.1920.1040" timestamp="1581431609876" />
+    <state x="1510" y="999" key="com.intellij.ide.util.TipDialog" timestamp="1581603273747">
       <screen x="1080" y="574" width="1920" height="1040" />
     </state>
     <state x="242" y="769" key="com.intellij.ide.util.TipDialog/-1920.574.1920.1040/1080.574.1920.1040/0.0.1080.1880@0.0.1080.1880" timestamp="1578476467957" />
-    <state x="1510" y="999" key="com.intellij.ide.util.TipDialog/0.0.1080.1880/-1920.574.1920.1040/1080.574.1920.1040@1080.574.1920.1040" timestamp="1579248432131" />
+    <state x="1510" y="999" key="com.intellij.ide.util.TipDialog/0.0.1080.1880/-1920.574.1920.1040/1080.574.1920.1040@1080.574.1920.1040" timestamp="1581603273747" />
+    <state x="1510" y="782" key="com.intellij.ide.util.TipDialog/0.0.1080.1880/1080.357.1920.1040/3000.0.640.440@1080.357.1920.1040" timestamp="1581408946834" />
     <state x="1510" y="999" key="com.intellij.ide.util.TipDialog/0.0.1080.1880/1080.574.1920.1040/-1920.574.1920.1040@1080.574.1920.1040" timestamp="1581087397856" />
     <state x="2033" y="574" width="974" height="1047" key="dock-window-1" timestamp="1581346018993">
       <screen x="1080" y="574" width="1920" height="1040" />

@@ -45,13 +45,11 @@ class LoginView(FormView):
 	def get(self, request):
 		if request.user.is_authenticated:
 			return HttpResponseRedirect(self.get_success_url())
-		print('made the request')
 		return render(request, 'users/login.html', {"form": self.form_class})
 
 
 	def form_valid(self, form):
 		# import ipdb;ipdb.set_trace()
-		print('made it here')
 		user = form.get_user()
 		login_and_handle_data_stored_in_session(user, self.request)
 		return HttpResponseRedirect(self.get_success_url())
@@ -76,7 +74,3 @@ class LogoutView(View):
 	def get(self, request):
 		logout(request)
 		return HttpResponseRedirect(reverse('login'))
-
-	def logout(self, request):
-		logout(request)
-		return HttpResponseRedirect('You have been successfully logged out!')
