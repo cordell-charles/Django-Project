@@ -9,50 +9,15 @@
 {% block content %}
 
 {% for instance in object_list %}
+
 	<p><strong> Model id: </strong> {{ instance.id }} </p>
 	<p><strong> Username: </strong> {{ instance.first_name }} </p>
 	<p><strong> Email: </strong> {{ instance.email }} </p>
 	<p><strong> Password: </strong> {{instance.password}} </p>
-	<p> --------------------------------- </p>
-{% endfor %}
+  
+  <br>
+  <br>
 
-  <h1> HTML practice example (temporary) </h1>
-  <div id="Forumula_1_cars">
-    <h2> Formula 1 Cars </h2>
-    <p>This is a HTML practice page containing information about <strong> formula 1 cars </strong> and why they are  <em> The Best! </em> </p>
-    <h3> The Car design </h3>
-    <ol>
-      <li> <a href="#Front Wing"> Front Wing </a></li>
-      <li> <a href="#Rear Wing"> Rear Wing </a></li>
-      <li> <a href="#Tyres"> Tyres </a></li>
-      <li> <a href="#Body"> Body </a></li>
-      <li> <a href="#Engine"> Engine </a></li>
-    </ol>
-  </div>
-  <div id="front_wing">
-    <h2> <a name="Front Wing"> </a>Front Wing </h2>
-    <p> Information on Front Wings.... </p>
-  </div>
-  <div id="rear_wing">
-    <h2> <a name="Rear Wing"> </a>Rear Wing </h2>
-    <p> Information on Rear Wings.... </p>
-  </div>
-  <div id="tyres">
-    <h2> <a name="Tyres"> </a> Tyres </h2>
-    <p> Information on Formula One car tyres.... </p>
-  </div>
-  <div id="body">
-    <h2> <a name="Body"> </a> Body </h2>
-    <p> Formula car bodies.... </p>
-  </div>
-  <div id="engine">
-    <h2> <a name="Engine"> </a> Engine </h2>
-    <p> Information on F1 Engines and the different parts.... </p>
-  </div>
-  <div id="media">
-    <h2>Media</h2>
-    <img src="https://www.formula1.com/content/dam/fom-website/manual/Technical/2019/Ferrari-vs-Mercedes/Ferrari%20vs%20Merc%20new.jpg.transform/9col/image.jpg" alt="Formula 1"/>
-  </div>
-</body>
+{% endfor %}
 
 {% endblock %}

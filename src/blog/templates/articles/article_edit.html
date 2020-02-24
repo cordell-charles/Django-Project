@@ -1,0 +1,22 @@
+
+<head>
+	<title> Edit </title>
+
+	<link rel="stylesheet" type="text/css" href="../../../static/stylesheet.css">
+
+</head>
+
+<body>
+
+	{% block content %}
+
+	<h1> Edit Article </h1>
+
+	<form action='' method= 'POST'> {% csrf_token %}
+		{{ form.as_p }} - {{p.errors}}
+		<input type= 'submit' value= "Submit Article" />
+	</form>
+
+	{% endblock %}
+
+</body>

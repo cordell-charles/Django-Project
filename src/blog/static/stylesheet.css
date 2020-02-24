@@ -10,14 +10,15 @@ h1 {
 }
 
 p {
-    color: white;
+    color: black;
+    background-color: #e5e4d7;
     line-height: 1.5em;
     padding: 10px;
-    border-color: white;
+    border-color: black;
     border-width: 2px;
     border-style: solid;
-    background-image: url(p_background.jpg);
     border-radius: 10px;
+    /* background-image: url(p_background.jpg); */;
 }
 
 #form-field {
@@ -36,4 +37,5 @@ a:visited {
 a:hover {
     color: #ffffff;
 }
+
 
