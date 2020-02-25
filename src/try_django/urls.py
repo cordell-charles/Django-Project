@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import include, path
 
-from accounts.views import (register,
+from accounts.views import (RegisterView,
                             AccountListView,
                             LoginView,
                             LogoutView,
@@ -29,14 +29,14 @@ from pages.views import (home_view,
     )
 
 urlpatterns = [
-
+    
+    path('admin/', admin.site.urls),
     path('blog/', include('blog.urls')),
-    path('products/', include('products.urls')), 
+    path('products/', include('products.urls')),
     path('', home_view, name='home'),
     path('about/',about_view),
     path('contact/', contact_view),
-    path('admin/', admin.site.urls),
-    path('register/', register, name='register'),
+    path('register/', RegisterView.as_view(), name='register'),
     path('account-list', AccountListView.as_view(), name= 'account-list'),
     path('login/', LoginView.as_view(), name= 'login'),
     path('logout/', LogoutView.as_view(), name= 'logout')
