@@ -12,7 +12,8 @@ from .models import Article
 from .forms import ArticleForm
 
 # Create your views here - Commented out
-class ArticleDetailView(DetailView):
+
+class ArticleDetailView(LoginRequiredMixin, DetailView):
 	template_name = 'articles/article_detail.html'
 
 	def get_object(self):
@@ -36,7 +37,6 @@ def article_detail_view(request):
 
 
 
-
 def dynamic_lookup_view(request, my_id): # Dynamic Url Routing
 	obj = Article.objects.get(id= my_id)
 	# obj = get_object_or_404(Product, id= my_id) - Changing the error page layout if object is not found 
@@ -44,6 +44,7 @@ def dynamic_lookup_view(request, my_id): # Dynamic Url Routing
 	"object": obj
 	}
 	return render(request, "articles/article_detail.html", context)
+
 
 
 
@@ -67,13 +68,17 @@ def article_list_view(request):
 
 
 
-class ArticleCreateView(CreateView): # Class based create view
+class ArticleCreateView(LoginRequiredMixin, CreateView): # Class based create view
 	# model = Article
 	template_name = 'articles/article_create.html'
 	form_class = ArticleForm
 	queryset = Article.objects.all()
 
-''' # Function based create view
+
+
+''' 
+# Function based create view
+
 def article_create_view(request):
 	form = ArticleForm(request.POST or None)
 
@@ -87,14 +92,14 @@ def article_create_view(request):
 	context = {
 		'form' : form
 	}
-	return render(request, "articles/article_create.html", context)
+	return render(request, "articles/article_create.html", context)\
 '''
 
 
 
-class ArticleEditView(UpdateView): # Class based editing view
+class ArticleEditView(LoginRequiredMixin, UpdateView): # Class based editing view
 	
-	template_name = 'articles/article_create.html'
+	template_name = 'articles/article_edit.html'
 	form_class = ArticleForm
 
 	def get_object(self):
@@ -106,7 +111,8 @@ class ArticleEditView(UpdateView): # Class based editing view
 
 
 
-class ArticleDeleteView(DeleteView): # Class based editing view
+
+class ArticleDeleteView(LoginRequiredMixin, DeleteView): # Class based editing view
 	
 	template_name = 'articles/article_delete.html'
 

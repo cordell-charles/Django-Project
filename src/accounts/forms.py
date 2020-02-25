@@ -30,10 +30,26 @@ class RegisterForm(forms.ModelForm):
 		}
 
 	def clean_password(self):
-		# Check to see if the password entries match
+		password 	= self.cleaned_data["password"].strip()
+		if password == None:
+			self.add_error('password', _("This field cannot be empty, please enter a password"))
+		return password
+		
+
+	def clean_password_retype(self):
+		password1 	= self.cleaned_data["password1"].strip()
+		if password1 == None:
+			self.add_error('password', _("This field cannot be empty, please enter a password"))
+		return password1
+
+
+
+
+	def password_valiadation(self):
+		# Validate the two passwords and check to see if they match
 		password 	= self.cleaned_data.get("password")
 		password1	= self.cleaned_data.get("password1")
-		if password != password1:
+		if pasword != password1:
 			raise forms.ValidationError("Passwords do not match!")
 		return password
 
@@ -43,63 +59,21 @@ class RegisterForm(forms.ModelForm):
 
 class LoginForm(forms.Form):
 
-	# email 			= forms.EmailField(required= True,max_length= 80)
-	username		= forms.CharField(label=_("username"), required= True, max_length= 80, widget= forms.TextInput(attrs={'placeholder':'username'}))
+	email			= forms.EmailField(label=_("email"), required= True, max_length= 80, widget= forms.TextInput(attrs={'placeholder':'email'}))
 	password 		= forms.CharField(label=_("password"), required= True, max_length= 100,  widget=forms.PasswordInput(attrs={'placeholder':'password'}))
 
 	class Meta:
 		model = User
 
 
-	# def clean_email(email):
-	# 	"""
-	# 	Validate email against the database
-	# 	"""
-
-	# 	try:
-	# 		User.objects.get(user__email= email)
-	# 	except ObjectDoesNotExist:
-	# 		raise forms.ValidationError("User does not exist!")
-	# 	return user__email
-	# 	user = authenticate(username=username, password=password)
-
-	# def clean_username(username):
-	# 	try:
-	# 		current_user = User.objects.get(user__username= username)
-	# 		print(current_user)
-	# 		user = authenticate(username= username)
-	# 		print('in the user form')
-	# 	except ObjectDoesNotExist:
-	# 		print('issue is with username')
-	# 		raise forms.ValidationError("User does not exist!")
-	# 	return user
-	#
-	#
-	#
-	# def clean_password(password):
-	# 	"""
-	# 	To validate you should use the django check_password
-	# 	"""
-	# 	# user = User.objects.last()
-	# 	try:
-	# 		print(password)
-	# 		# user_password = self.cleaned_data['password']
-	# 		check_password(password, User.password)
-	# 		print('password checked')
-	# 	except:
-	# 		print('password exception hit')
-	# 		raise forms.ValidationError('Password is incorrect')
-	# 	return password
-
-
 	def clean(self):
 		try:
-			username = self.cleaned_data['username']
+			email 	 = self.cleaned_data['email']
 			password = self.cleaned_data['password']
 
-			user = get_user_model().objects.get(username= username)
+			user = get_user_model().objects.get(email= email)
 			try:
-				self.authed_user = authenticate(username= user.username, password= password)
+				self.authed_user = authenticate(email= user.email, password= password)
 			except ValueError:
 				self.authed_user = None
 			if self.authed_user:
@@ -113,6 +87,4 @@ class LoginForm(forms.Form):
 
 
 	def get_user(self):
-		# self.authed_user = authenticate(user, password)
-		# print('user password')
 		return self.authed_user
