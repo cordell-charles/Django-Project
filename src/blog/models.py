@@ -1,13 +1,14 @@
 from django.db import models
 from django.urls import reverse
-from accounts.models import User
+from accounts.models import BlogUser
+from django.utils import timezone
 
 # Create your models here.
 class Article(models.Model):
-	# user		= models.ForeignKey(User, on_delete= models.CASCADE)
+	user		= models.ForeignKey(BlogUser, related_name='articles', on_delete= models.CASCADE)
 	title 		= models.CharField(max_length= 120) 
 	subtitle 	= models.CharField(max_length= 240)
-	date 		= models.DateField(auto_now= True)
+	date 		= models.DateField(default=timezone.now)
 	article 	= models.TextField(blank= False)
 	name 		= models.CharField(blank= False, max_length= 80)
 

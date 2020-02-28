@@ -5,35 +5,25 @@ from django.contrib.auth.models import AbstractUser
 from django.db import transaction
 
 # Create your models here.
+class BlogUser(models.Model):
+	user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='blog_user')
 
+	@property
+	def display_name(self):
+		return f"{self.user.first_name} {self.user.last_name}"
 
-class User(AbstractUser):
-	''' User model '''
-	user 		= models.OneToOneField(settings.AUTH_USER_MODEL, null= True, blank= True, on_delete= models.CASCADE, related_name= 'users')
-	first_name 	= models.CharField(max_length= 50, blank= False, null= True)
-	last_name 	= models.CharField(max_length= 50, blank= False, null= True)
-	email 		= models.EmailField(max_length= 80, blank= False, null= True, unique= True)
-	username 	= models.CharField(max_length= 100, blank= False, null= True)
-	password 	= models.CharField(max_length= 100, blank= False, null= True)
-
-	class Meta:
-		verbose_name_plural = "Blog Users"
-
-	def __repr__(self):
-		return f"(self.user.email)"
-
-	USERNAME_FIELD 		= 'email'
-
-	REQUIRED_FIELDS 	= ['first_name', 'last_name', 'username']
-
+	def __str__(self):
+		return f"{self.user.email}"
 
 	@staticmethod
-	def create_user(first_name, last_name, username, email, password= None):
-		with transaction.atomic():
-			try:
-				user = get_user_model().objects.create(username= username, email= email, password= password)
-				User.objects.create(user= user, first_name= first_name, last_name= last_name, email= email,username= username, password= password)
-			except Exception as e:
-				return e
+	def create_user(first_name, last_name, username, email, password):
+		try:
+			with transaction.atomic():
+				user = get_user_model().objects.create(username=username, email=email, password=password, first_name=first_name, last_name=last_name)
+				return  BlogUser.objects.create(user=user)
+		except Exception as e:
+			return e
 
-
+class profile:
+	# id = models.models.ForeignKey("accounts.BlogUser", verbose_name=_("blog profiles"), on_delete=models.CASCADE)
+	pass

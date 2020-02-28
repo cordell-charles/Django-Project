@@ -51,9 +51,16 @@ def dynamic_lookup_view(request, my_id): # Dynamic Url Routing
 class ArticleListView(LoginRequiredMixin, ListView): # Class based list view
 	# model = Article
 	template_name = 'articles/article_list.html'
-	queryset = Article.objects.all()  # blog/<modelname>_list.html
 
+	def get_queryset(self):
+		return Article.objects.all()
 
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		context["user"] = self.request.user
+		return context
+	
+	
 ''' Function based list view 
 
 def article_list_view(request):

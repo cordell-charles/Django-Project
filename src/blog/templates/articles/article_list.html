@@ -12,6 +12,8 @@
 
 	{% block content %}
 
+	<h1>Welcome {{ user.blog_user.display_name }} </h1>
+
 	<h1> This is the article list view </h1>
 
 	{% for instance in object_list %}

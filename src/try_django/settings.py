@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'accounts.apps.AccountsConfig',
+    'accounts',
 
     # Third party apps
 
@@ -46,10 +46,9 @@ INSTALLED_APPS = [
     # own apps
     'products',
     'pages',
-    'blog'
+    'blog',
 ]
 
-AUTH_USER_MODEL = 'accounts.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -62,7 +61,12 @@ MIDDLEWARE = [
 ]
 
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend'
+]
+
 ROOT_URLCONF = 'try_django.urls'
+
 
 TEMPLATES = [
     {

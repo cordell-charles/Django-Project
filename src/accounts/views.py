@@ -5,16 +5,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext_lazy as _
-from .models import User
+from .models import BlogUser
 from .forms import RegisterForm, LoginForm
-
-# Create your views here.
-
-
-def login_and_handle_data_stored_in_session(user, request):
-	session_key = request.session.session_key
-	login(request, user)
-
 
 
 class RegisterView(FormView):
@@ -22,40 +14,32 @@ class RegisterView(FormView):
 	template_name   = 'users/register.html'
 	form_class      = RegisterForm
 
-	
 	def form_valid(self, form):
-		form = RegisterForm(self.request.POST or None)
-		if self.request.method == "POST":
-			if form.is_valid():
-				form.save()
-				return HttpResponseRedirect(self.get_success_url())
-			else:
-				raise forms.ValidationError("Account could not be created, Please try again")
-		else:
-			return render(request,"users/register.html",{"form": form})
+		# SAVE THE USER USING THE FUNCTION THAT YOU CREATED AS STATIC!
 
+		blog_user = BlogUser.create_user(
+			first_name=form.cleaned_data.get('first_name'), last_name=form.cleaned_data.get('last_name'),
+			email=form.cleaned_data.get('email'), username=form.cleaned_data.get('username'), password=form.cleaned_data.get('password'),  
+			)
+		login(self.request, blog_user.user)
+		return HttpResponseRedirect(self.get_success_url())
 
 	def form_invalid(self, form):
 		for errors in form.errors.items():
 			key, msg = errors
 			messages.add_message(self.request, messages.ERROR, _(msg[0]))
-			return super().form_invalid(form)
-
+		return super().form_invalid(form)
 
 	def get_success_url(self):
-		return reverse('login')
-
-
-
+		return reverse('blog:article-list')
 
 
 class AccountListView(ListView):
-	model = User
+	model = BlogUser
 	template_name = 'users/user_list.html'
-	queryset = User.objects.all()
 
-
-
+	def get_queryset(self):
+		return BlogUser.objects.all()
 
 
 class LoginView(FormView):
@@ -70,12 +54,9 @@ class LoginView(FormView):
 			return HttpResponseRedirect(self.get_success_url())
 		return render(request, 'users/login.html', {"form": self.form_class})
 
-
 	def form_valid(self, form):
-		print('here')
-		import ipdb;ipdb.set_trace()
-		user = form.get_user()
-		login_and_handle_data_stored_in_session(user, self.request)
+		blog_user = form.get_user()
+		login(self.request, blog_user)
 		return HttpResponseRedirect(self.get_success_url())
 
 
@@ -85,7 +66,6 @@ class LoginView(FormView):
 		"""
 		messages.add_message(self.request, messages.ERROR, ("Email or password is invalid!"))
 		return render(self.request, 'users/login.html', {"form": self.form_class})
-
 
 	def get_success_url(self):
 		return reverse('blog:article-list')

@@ -21,8 +21,7 @@
 <body>
     <br>
     <br>
-    <form method="POST" class="form-group">
-        {% csrf_token %}
+    <form method="POST" class="form-group"> {% csrf_token %}
 
             {{ form.as_table }}
             <br>
