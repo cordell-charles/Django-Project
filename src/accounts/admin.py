@@ -21,6 +21,7 @@ class UserAdmin(admin.ModelAdmin):
 
 	def is_superuser(self, obj):
 		return obj.user.is_superuser
+	
 
 
 admin.site.register(BlogUser, UserAdmin)

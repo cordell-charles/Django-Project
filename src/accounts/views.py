@@ -16,7 +16,6 @@ class RegisterView(FormView):
 
 	def form_valid(self, form):
 		# SAVE THE USER USING THE FUNCTION THAT YOU CREATED AS STATIC!
-
 		blog_user = BlogUser.create_user(
 			first_name=form.cleaned_data.get('first_name'), last_name=form.cleaned_data.get('last_name'),
 			email=form.cleaned_data.get('email'), username=form.cleaned_data.get('username'), password=form.cleaned_data.get('password'),  
@@ -66,6 +65,7 @@ class LoginView(FormView):
 		"""
 		messages.add_message(self.request, messages.ERROR, ("Email or password is invalid!"))
 		return render(self.request, 'users/login.html', {"form": self.form_class})
+		
 
 	def get_success_url(self):
 		return reverse('blog:article-list')
